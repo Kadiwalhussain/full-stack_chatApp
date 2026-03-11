@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-app-config
+  namespace: chat-app
+data:
+  NODE_ENV: "production"
+  PORT: "5001"
+  CLIENT_ORIGINS: "http://localhost:30080,http://127.0.0.1:30080,http://localhost:8080,http://127.0.0.1:8080"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: chat-app-secrets
+  namespace: chat-app
+type: Opaque
+stringData:
+  JWT_SECRET: "SwobHI9VSV6Icdq9NFYL7sgLcmDvjik3oCM0ePyDQY8ktTVZyWptVy9nz10f74gj"
+  MONGO_INITDB_ROOT_USERNAME: "root"
+  MONGO_INITDB_ROOT_PASSWORD: "admin"
+  MONGODB_URI: "mongodb://root:admin@mongo:27017/chatApp?authSource=admin&retryWrites=true&w=majority"
+  CLOUDINARY_CLOUD_NAME: ""
+  CLOUDINARY_API_KEY: ""
+  CLOUDINARY_API_SECRET: ""
